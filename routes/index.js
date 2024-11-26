@@ -6,11 +6,11 @@ const router = express.Router();
 module.exports = (models) => {
   const { KhataCompany, KhataParty, KhataTransaction } = models;
 
-//   // Middleware to check authentication and set req.user
-//   const authMiddleware = require('../../../middleware/authMiddleware');
+  // Middleware to check authentication and set req.user
+  const authMiddleware = require('../../../middleware/authMiddleware');
 
   // Route to add a company
-  router.post('/addCompany', authMiddleware, async (req, res) => {
+  router.post('/addCompany', async (req, res) => {
     const userId = req.user.uid;
     const { name } = req.body;
 

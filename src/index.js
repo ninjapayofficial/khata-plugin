@@ -17,7 +17,7 @@ module.exports = {
       // Serve static files from the 'views' directory
       router.use(express.static(path.join(__dirname, 'views')));
 
-     // Serve the index.html file when the root of the plugin is accessed
+      // Serve the index.html file when the root of the plugin is accessed
       router.get('/', (req, res) => {
       res.sendFile(path.join(__dirname, 'views', 'index.html'));
       });
