@@ -1,4 +1,4 @@
-// plugins/khata-plugin/migrations/20211010-create-company.js
+// plugins/khata-plugin/migrations/20211010-create-khata-company.js
 
 'use strict';
 // const { DataTypes } = require('sequelize');

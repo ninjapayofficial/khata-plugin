@@ -1,4 +1,4 @@
-// plugins/khata-plugin/migrations/20211010-create-party.js
+// plugins/khata-plugin/migrations/20211010-create-khata-party.js
 
 
 'use strict';
