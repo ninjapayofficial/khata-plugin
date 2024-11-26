@@ -1,21 +1,22 @@
 // plugins/khata-plugin/migrations/20211010-create-transaction.js
 
+const { DataTypes } = require('sequelize');
+
 module.exports = {
-    up: async (queryInterface, Sequelize) => {
-      await queryInterface.createTable('KhataTransactions', {
-        id: { type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true },
-        partyId: { type: Sequelize.INTEGER, allowNull: false },
-        amount: { type: Sequelize.DECIMAL(10, 2), allowNull: false },
-        description: { type: Sequelize.STRING },
-        entryDate: { type: Sequelize.DATE, defaultValue: Sequelize.literal('CURRENT_TIMESTAMP') },
-        billImageUrl: { type: Sequelize.STRING },
-        balanceAfter: { type: Sequelize.DECIMAL(10, 2) },
-        createdAt: { type: Sequelize.DATE, defaultValue: Sequelize.literal('CURRENT_TIMESTAMP') },
-        updatedAt: { type: Sequelize.DATE, defaultValue: Sequelize.literal('CURRENT_TIMESTAMP') },
-      });
-    },
-    down: async (queryInterface, Sequelize) => {
-      await queryInterface.dropTable('KhataTransactions');
-    },
-  };
-  
+  up: async (queryInterface) => {
+    await queryInterface.createTable('KhataTransactions', {
+      id: { type: DataTypes.INTEGER, autoIncrement: true, primaryKey: true },
+      partyId: { type: DataTypes.INTEGER, allowNull: false },
+      amount: { type: DataTypes.DECIMAL(10, 2), allowNull: false },
+      description: { type: DataTypes.STRING },
+      entryDate: { type: DataTypes.DATE, defaultValue: DataTypes.NOW },
+      billImageUrl: { type: DataTypes.STRING },
+      balanceAfter: { type: DataTypes.DECIMAL(10, 2) },
+      createdAt: { type: DataTypes.DATE, defaultValue: DataTypes.NOW },
+      updatedAt: { type: DataTypes.DATE, defaultValue: DataTypes.NOW },
+    });
+  },
+  down: async (queryInterface) => {
+    await queryInterface.dropTable('KhataTransactions');
+  },
+};
