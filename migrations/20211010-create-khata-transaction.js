@@ -2,10 +2,10 @@
 
 
 'use strict';
-// const { DataTypes } = require('sequelize');
 
 module.exports = {
-  up: async ({ context: sequelize }) => {
+  up: async ({ context }) => {
+    const sequelize = context;
     const queryInterface = sequelize.getQueryInterface();
     const { DataTypes } = require('sequelize');
     await queryInterface.createTable('KhataTransactions', {
@@ -20,9 +20,9 @@ module.exports = {
       updatedAt: { type: DataTypes.DATE, defaultValue: DataTypes.NOW },
     });
   },
-  down: async ({ context: sequelize }) => {
+  down: async ({ context }) => {
+    const sequelize = context;
     const queryInterface = sequelize.getQueryInterface();
-    // Drop the table first
-    await queryInterface.dropTable('KhataTransactions');
+    await queryInterface.dropTable('KhataTransactions', {});
   },
 };

@@ -4,7 +4,8 @@
 'use strict';
 
 module.exports = {
-  up: async ({ context: sequelize }) => {
+  up: async ({ context }) => {
+    const sequelize = context;
     const queryInterface = sequelize.getQueryInterface();
     const { DataTypes } = require('sequelize');
     await queryInterface.createTable('KhataParties', {
@@ -22,12 +23,12 @@ module.exports = {
       updatedAt: { type: DataTypes.DATE, defaultValue: DataTypes.NOW },
     });
   },
-  down: async ({ context: sequelize }) => {
+  down: async ({ context }) => {
+    const sequelize = context;
     const queryInterface = sequelize.getQueryInterface();
-    // Drop the table first
-    await queryInterface.dropTable('KhataParties');
+    // Drop the table first, providing an empty options object
+    await queryInterface.dropTable('KhataParties', {});
     // Then drop the ENUM type
     await queryInterface.sequelize.query('DROP TYPE IF EXISTS "enum_KhataParties_type" CASCADE;');
   },
 };
-

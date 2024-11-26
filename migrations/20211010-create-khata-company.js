@@ -1,10 +1,10 @@
 // plugins/khata-plugin/migrations/20211010-create-khata-company.js
 
 'use strict';
-// const { DataTypes } = require('sequelize');
 
 module.exports = {
-  up: async ({ context: sequelize }) => {
+  up: async ({ context }) => {
+    const sequelize = context;
     const queryInterface = sequelize.getQueryInterface();
     const { DataTypes } = require('sequelize');
     await queryInterface.createTable('KhataCompanies', {
@@ -15,9 +15,9 @@ module.exports = {
       updatedAt: { type: DataTypes.DATE, defaultValue: DataTypes.NOW },
     });
   },
-  down: async ({ context: sequelize }) => {
+  down: async ({ context }) => {
+    const sequelize = context;
     const queryInterface = sequelize.getQueryInterface();
-    // Drop the table first
-    await queryInterface.dropTable('KhataCompanies');
+    await queryInterface.dropTable('KhataCompanies', {});
   },
 };
