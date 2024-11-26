@@ -1,4 +1,4 @@
-// plugins/khata-plugin/migrations/20211010-create-transaction.js
+// plugins/khata-plugin/migrations/20211010-create-khata-transaction.js
 
 
 'use strict';
