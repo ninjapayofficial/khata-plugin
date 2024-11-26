@@ -1,9 +1,12 @@
 // plugins/khata-plugin/migrations/20211010-create-company.js
 
-const { DataTypes } = require('sequelize');
+'use strict';
+// const { DataTypes } = require('sequelize');
 
 module.exports = {
-  up: async (queryInterface) => {
+  up: async ({ context: sequelize }) => {
+    const queryInterface = sequelize.getQueryInterface();
+    const { DataTypes } = require('sequelize');
     await queryInterface.createTable('KhataCompanies', {
       id: { type: DataTypes.INTEGER, autoIncrement: true, primaryKey: true },
       userId: { type: DataTypes.STRING, allowNull: false },

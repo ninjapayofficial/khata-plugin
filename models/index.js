@@ -7,6 +7,8 @@ module.exports = (sequelize) => {
       id: { type: DataTypes.INTEGER, autoIncrement: true, primaryKey: true },
       userId: { type: DataTypes.STRING, allowNull: false },
       name: { type: DataTypes.STRING, allowNull: false },
+    }, {
+        tableName: 'KhataCompanies',
     });
   
     const KhataParty = sequelize.define('KhataParty', {
@@ -20,6 +22,8 @@ module.exports = (sequelize) => {
       shippingAddress: { type: DataTypes.TEXT },
       reminderDate: { type: DataTypes.DATE },
       currentBalance: { type: DataTypes.DECIMAL(10, 2), defaultValue: 0 },
+    }, {
+        tableName: 'KhataParties',
     });
   
     const KhataTransaction = sequelize.define('KhataTransaction', {
@@ -30,6 +34,8 @@ module.exports = (sequelize) => {
       entryDate: { type: DataTypes.DATE, defaultValue: DataTypes.NOW },
       billImageUrl: { type: DataTypes.STRING },
       balanceAfter: { type: DataTypes.DECIMAL(10, 2) },
+    }, {
+        tableName: 'KhataTransactions',
     });
   
     // Associations
