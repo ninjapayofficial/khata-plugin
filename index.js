@@ -10,7 +10,7 @@ module.exports = {
     // Import models
     const models = require('./models')(sequelize);
 
-    // Run migrations (consider removing this if migrations are handled elsewhere)
+    // Run migrations (consider removing this if migrations are handled elsewhere, like how it is doing in main plugin application)
     // await sequelize.getQueryInterface().createTable('KhataCompanies', models.KhataCompany.rawAttributes);
     // await sequelize.getQueryInterface().createTable('KhataParties', models.KhataParty.rawAttributes);
     // await sequelize.getQueryInterface().createTable('KhataTransactions', models.KhataTransaction.rawAttributes);
