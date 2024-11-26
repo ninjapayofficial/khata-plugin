@@ -15,7 +15,9 @@ module.exports = {
       updatedAt: { type: DataTypes.DATE, defaultValue: DataTypes.NOW },
     });
   },
-  down: async (queryInterface) => {
+  down: async ({ context: sequelize }) => {
+    const queryInterface = sequelize.getQueryInterface();
+    // Drop the table first
     await queryInterface.dropTable('KhataCompanies');
   },
 };
