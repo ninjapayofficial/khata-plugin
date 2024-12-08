@@ -1,17 +1,16 @@
 // plugins/khata-plugin/migrations/20211010-create-khata-party.js
 
-
-'use strict';
+"use strict";
 
 module.exports = {
   up: async ({ context }) => {
     const sequelize = context;
     const queryInterface = sequelize.getQueryInterface();
-    const { DataTypes } = require('sequelize');
-    await queryInterface.createTable('KhataParties', {
+    const { DataTypes } = require("sequelize");
+    await queryInterface.createTable("KhataParties", {
       id: { type: DataTypes.INTEGER, autoIncrement: true, primaryKey: true },
       companyId: { type: DataTypes.INTEGER, allowNull: false },
-      type: { type: DataTypes.ENUM('customer', 'supplier'), allowNull: false },
+      type: { type: DataTypes.ENUM("customer", "supplier"), allowNull: false },
       name: { type: DataTypes.STRING, allowNull: false },
       phoneNumber: { type: DataTypes.STRING },
       gstin: { type: DataTypes.STRING },
@@ -27,8 +26,10 @@ module.exports = {
     const sequelize = context;
     const queryInterface = sequelize.getQueryInterface();
     // Drop the table first, providing an empty options object
-    await queryInterface.dropTable('KhataParties', {});
+    await queryInterface.dropTable("KhataParties", {});
     // Then drop the ENUM type
-    await queryInterface.sequelize.query('DROP TYPE IF EXISTS "enum_KhataParties_type" CASCADE;');
+    await queryInterface.sequelize.query(
+      'DROP TYPE IF EXISTS "enum_KhataParties_type" CASCADE;',
+    );
   },
 };

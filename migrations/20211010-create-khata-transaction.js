@@ -1,14 +1,13 @@
 // plugins/khata-plugin/migrations/20211010-create-khata-transaction.js
 
-
-'use strict';
+"use strict";
 
 module.exports = {
   up: async ({ context }) => {
     const sequelize = context;
     const queryInterface = sequelize.getQueryInterface();
-    const { DataTypes } = require('sequelize');
-    await queryInterface.createTable('KhataTransactions', {
+    const { DataTypes } = require("sequelize");
+    await queryInterface.createTable("KhataTransactions", {
       id: { type: DataTypes.INTEGER, autoIncrement: true, primaryKey: true },
       partyId: { type: DataTypes.INTEGER, allowNull: false },
       amount: { type: DataTypes.DECIMAL(10, 2), allowNull: false },
@@ -23,6 +22,6 @@ module.exports = {
   down: async ({ context }) => {
     const sequelize = context;
     const queryInterface = sequelize.getQueryInterface();
-    await queryInterface.dropTable('KhataTransactions', {});
+    await queryInterface.dropTable("KhataTransactions", {});
   },
 };
