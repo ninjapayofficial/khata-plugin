@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-// plugins/khata-plugin/routes/swaggerIndex.js
+// plugins/khata-plugin/src/routes/index.js
 
 const express = require("express");
 const router = express.Router();
@@ -15,6 +15,118 @@ module.exports = (models) => {
    * tags:
    *   name: KhataPlugin
    *   description: Endpoints for managing Khata companies, parties, and transactions
+   */
+
+  /**
+   * @swagger
+   * components:
+   *   schemas:
+   *     ErrorResponse:
+   *       type: object
+   *       properties:
+   *         error:
+   *           type: string
+   *           description: Error message detailing what went wrong.
+   *
+   *     KhataCompany:
+   *       type: object
+   *       properties:
+   *         id:
+   *           type: integer
+   *           description: Unique identifier for the Khata company.
+   *         userId:
+   *           type: integer
+   *           description: ID of the user who owns the company.
+   *         name:
+   *           type: string
+   *           description: Name of the Khata company.
+   *         createdAt:
+   *           type: string
+   *           format: date-time
+   *           description: Timestamp when the company was created.
+   *         updatedAt:
+   *           type: string
+   *           format: date-time
+   *           description: Timestamp when the company was last updated.
+   *
+   *     KhataParty:
+   *       type: object
+   *       properties:
+   *         id:
+   *           type: integer
+   *           description: Unique identifier for the Khata party.
+   *         companyId:
+   *           type: integer
+   *           description: ID of the associated Khata company.
+   *         type:
+   *           type: string
+   *           enum: ["customer", "supplier"]
+   *           description: Type of party (customer or supplier).
+   *         name:
+   *           type: string
+   *           description: Name of the party.
+   *         phoneNumber:
+   *           type: string
+   *           description: Party's phone number.
+   *         gstin:
+   *           type: string
+   *           description: GST Identification Number.
+   *         billingAddress:
+   *           type: string
+   *           description: Billing address of the party.
+   *         shippingAddress:
+   *           type: string
+   *           description: Shipping address of the party.
+   *         reminderDate:
+   *           type: string
+   *           format: date
+   *           description: Reminder date for payments.
+   *         currentBalance:
+   *           type: number
+   *           description: Current balance of the party.
+   *         createdAt:
+   *           type: string
+   *           format: date-time
+   *           description: Timestamp when the party was created.
+   *         updatedAt:
+   *           type: string
+   *           format: date-time
+   *           description: Timestamp when the party was last updated.
+   *
+   *     KhataTransaction:
+   *       type: object
+   *       properties:
+   *         id:
+   *           type: integer
+   *           description: Unique identifier for the Khata transaction.
+   *         partyId:
+   *           type: integer
+   *           description: ID of the associated Khata party.
+   *         amount:
+   *           type: number
+   *           description: Transaction amount.
+   *         description:
+   *           type: string
+   *           description: Description of the transaction.
+   *         entryDate:
+   *           type: string
+   *           format: date-time
+   *           description: Date of the transaction entry.
+   *         billImageUrl:
+   *           type: string
+   *           format: uri
+   *           description: URL of the bill image.
+   *         balanceAfter:
+   *           type: number
+   *           description: Balance after the transaction.
+   *         createdAt:
+   *           type: string
+   *           format: date-time
+   *           description: Timestamp when the transaction was created.
+   *         updatedAt:
+   *           type: string
+   *           format: date-time
+   *           description: Timestamp when the transaction was last updated.
    */
 
   /**
@@ -86,7 +198,7 @@ module.exports = (models) => {
    *               type:
    *                 type: string
    *                 enum: ["customer", "supplier"]
-   *                 description: Type of party
+   *                 description: Type of party (customer or supplier)
    *               name:
    *                 type: string
    *                 description: Name of the party
